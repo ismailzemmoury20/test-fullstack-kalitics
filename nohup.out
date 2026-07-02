@@ -1,0 +1,20 @@
+2026-07-03  0:14:08 0 [Warning] Setting lower_case_table_names=2 because file system for /opt/homebrew/var/mysql/ is case insensitive
+2026-07-03  0:14:08 0 [Note] Starting MariaDB 12.3.2-MariaDB source revision 9f98f82b14a9b939834281672b6d0cf965db69a3 server_uid DaM7DWKBIZzMGMwLH0/MWdJueDk= as process 41843
+2026-07-03  0:14:08 0 [ERROR] mariadbd: Can't lock aria control file '/opt/homebrew/var/mysql/aria_log_control' for exclusive use, error: 35. Will retry for 30 seconds
+2026-07-03  0:14:38 0 [ERROR] mariadbd: Got error 'Could not get an exclusive lock; file is probably in use by another process' when trying to use aria control file '/opt/homebrew/var/mysql/aria_log_control'
+2026-07-03  0:14:38 0 [ERROR] Plugin 'Aria' registration as a STORAGE ENGINE failed.
+2026-07-03  0:14:38 0 [Note] InnoDB: Compressed tables use zlib 1.2.12
+2026-07-03  0:14:38 0 [Note] InnoDB: Number of transaction pools: 1
+2026-07-03  0:14:38 0 [Note] InnoDB: Using generic crc32 instructions
+2026-07-03  0:14:38 0 [Note] InnoDB: innodb_buffer_pool_size_max=8388608m, innodb_buffer_pool_size=128m
+2026-07-03  0:14:38 0 [Note] InnoDB: Completed initialization of buffer pool
+2026-07-03  0:14:38 0 [ERROR] InnoDB: Unable to lock ./ibdata1 error: 35
+2026-07-03  0:14:38 0 [Note] InnoDB: Check that you do not already have another mariadbd process using the same InnoDB data or log files.
+2026-07-03  0:14:38 0 [ERROR] InnoDB: Plugin initialization aborted with error Generic error
+2026-07-03  0:14:38 0 [Note] InnoDB: Starting shutdown...
+2026-07-03  0:14:38 0 [ERROR] Plugin 'InnoDB' registration as a STORAGE ENGINE failed.
+2026-07-03  0:14:38 0 [Note] Plugin 'FEEDBACK' is disabled.
+2026-07-03  0:14:38 0 [Note] Plugin 'wsrep-provider' is disabled.
+2026-07-03  0:14:38 0 [ERROR] Could not open mysql.plugin table: "Unknown storage engine 'Aria'". Some plugins may be not loaded
+2026-07-03  0:14:38 0 [ERROR] Failed to initialize plugins.
+2026-07-03  0:14:38 0 [ERROR] Aborting

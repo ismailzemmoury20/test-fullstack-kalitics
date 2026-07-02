@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1>Créer un pointage</h1>
+
+{{ form_start(form) }}
+
+    {{ form_row(form.clockingUser) }}
+    {{ form_row(form.date) }}
+
+    <h3>Chantiers</h3>
+    <div id="clocking-items" 
+         data-prototype="{{ form_widget(form.clockingItems.vars.prototype)|e('html_attr') }}">
+        
+        {% for item in form.clockingItems %}
+            <div class="clocking-item">
+                {{ form_row(item.project) }}
+                {{ form_row(item.duration) }}
+                <button type="button" class="remove-item">Supprimer</button>
+            </div>
+        {% endfor %}
+    </div>
+
+    <button type="button" id="add-item">+ Ajouter un chantier</button>
+
+    {{ form_row(form.submit) }}
+
+{{ form_end(form) }}
+
+<script>
+    const container = document.getElementById('clocking-items');
+    let index = container.querySelectorAll('.clocking-item').length;
+
+    document.getElementById('add-item').addEventListener('click', function() {
+        const prototype = container.dataset.prototype;
+        const newItem = prototype.replace(/__name__/g, index);
+        const div = document.createElement('div');
+        div.classList.add('clocking-item');
+        div.innerHTML = newItem + '<button type="button" class="remove-item">Supprimer</button>';
+        container.appendChild(div);
+        index++;
+        addRemoveListener(div.querySelector('.remove-item'));
+    });
+
+    document.querySelectorAll('.remove-item').forEach(btn => addRemoveListener(btn));
+
+    function addRemoveListener(btn) {
+        btn.addEventListener('click', function() {
+            btn.closest('.clocking-item').remove();
+        });
+    }
+</script>
+
+{% endblock %}

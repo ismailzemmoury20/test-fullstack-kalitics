@@ -1,0 +1,49 @@
+<?php
+namespace App\Form;
+
+use App\Entity\Project;
+use App\Entity\User;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+
+class CreateClockingByChief extends AbstractType
+{
+    public function buildForm(FormBuilderInterface $builder, array $options): void
+    {
+        $builder
+            ->add('project', EntityType::class, [
+                'class' => Project::class,
+                'choice_label' => 'name',
+                'label' => 'Chantier',
+            ])
+            ->add('date', DateType::class, [
+                'widget' => 'single_text',
+                'label' => 'Date',
+            ])
+            ->add('duration', IntegerType::class, [
+                'label' => 'Durée (heures)',
+            ])
+            ->add('users', EntityType::class, [
+                'class' => User::class,
+                'choice_label' => static function(?User $choice): ?string {
+                    return $choice === null ? null : $choice->getLastName() . ' ' . $choice->getFirstName();
+                },
+                'multiple' => true,
+                'expanded' => true,
+                'label' => 'Collaborateurs',
+            ])
+            ->add('submit', SubmitType::class, [
+                'label' => 'Pointer',
+            ]);
+    }
+
+    public function configureOptions(OptionsResolver $resolver): void
+    {
+        $resolver->setDefaults([]);
+    }
+}

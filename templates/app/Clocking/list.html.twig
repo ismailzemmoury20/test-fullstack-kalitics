@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1>Liste des pointages</h1>
+
+<div class="actions">
+    <a href="{{ path('app_Clocking_create') }}">+ Créer un pointage</a>
+    <a href="{{ path('app_Clocking_create_by_chief') }}">+ Pointage chef de projet</a>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Collaborateur</th>
+            <th>Date</th>
+            <th>Chantiers</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for clocking in clockings %}
+        <tr>
+            <td>{{ clocking.clockingUser.lastName }} {{ clocking.clockingUser.firstName }}</td>
+            <td>{{ clocking.date|date('d/m/Y') }}</td>
+            <td>
+                <ul>
+                {% for item in clocking.clockingItems %}
+                    <li>{{ item.project.name }} — {{ item.duration }}h</li>
+                {% endfor %}
+                </ul>
+            </td>
+            <td>
+                <form method="POST" action="{{ path('app_Clocking_delete', {id: clocking.id}) }}">
+                    <button type="submit" onclick="return confirm('Supprimer ce pointage ?')">Supprimer</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

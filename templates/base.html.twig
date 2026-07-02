@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Kalitics BTP</title>
+        <link
+                rel="icon"
+                href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>"
+        >
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                font-family: system-ui, sans-serif;
+                font-size: 15px;
+                color: #222;
+                background: #f5f5f5;
+            }
+
+            nav {
+                background: #1a1a2e;
+                padding: 0 24px;
+            }
+
+            nav ul {
+                list-style: none;
+                display: flex;
+                gap: 4px;
+            }
+
+            nav ul li a {
+                display: block;
+                padding: 14px 18px;
+                color: #ccc;
+                text-decoration: none;
+                font-size: 14px;
+            }
+
+            nav ul li a:hover {
+                color: #fff;
+                background: #ffffff18;
+            }
+
+            .page {
+                max-width: 960px;
+                margin: 32px auto;
+                padding: 0 16px;
+            }
+
+            h1 {
+                font-size: 22px;
+                font-weight: 600;
+                margin-bottom: 20px;
+                color: #1a1a2e;
+            }
+
+            h3 {
+                font-size: 16px;
+                font-weight: 600;
+                margin: 20px 0 10px;
+                color: #333;
+            }
+
+            a {
+                color: #e07b00;
+                text-decoration: none;
+            }
+
+            a:hover {
+                text-decoration: underline;
+            }
+
+            .actions {
+                display: flex;
+                gap: 12px;
+                margin-bottom: 20px;
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                background: #fff;
+                border-radius: 6px;
+                overflow: hidden;
+                box-shadow: 0 1px 3px #0001;
+            }
+
+            thead {
+                background: #1a1a2e;
+                color: #fff;
+            }
+
+            thead th,
+            thead td {
+                padding: 12px 14px;
+                text-align: left;
+                font-weight: 500;
+                font-size: 13px;
+                text-transform: uppercase;
+                letter-spacing: 0.04em;
+            }
+
+            tbody tr {
+                border-bottom: 1px solid #eee;
+            }
+
+            tbody tr:last-child {
+                border-bottom: none;
+            }
+
+            tbody td {
+                padding: 11px 14px;
+                vertical-align: top;
+            }
+
+            tbody tr:hover {
+                background: #fafafa;
+            }
+
+            tbody ul {
+                list-style: none;
+                padding: 0;
+            }
+
+            tbody ul li {
+                padding: 2px 0;
+                color: #444;
+            }
+
+            form {
+                background: #fff;
+                padding: 24px;
+                border-radius: 6px;
+                max-width: 560px;
+                box-shadow: 0 1px 3px #0001;
+            }
+
+            form .form-group,
+            form > div {
+                margin-bottom: 16px;
+            }
+
+            form label {
+                display: block;
+                font-size: 13px;
+                font-weight: 500;
+                margin-bottom: 5px;
+                color: #333;
+            }
+
+            form input,
+            form select {
+                width: 100%;
+                padding: 8px 10px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                font-size: 14px;
+                color: #222;
+                background: #fff;
+            }
+
+            form input:focus,
+            form select:focus {
+                outline: none;
+                border-color: #e07b00;
+            }
+
+            .clocking-item {
+                border: 1px solid #e8e8e8;
+                padding: 14px;
+                border-radius: 4px;
+                margin-bottom: 10px;
+                background: #fafafa;
+            }
+
+            button {
+                padding: 8px 16px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 14px;
+            }
+
+            button[type="submit"],
+            button#add-item {
+                background: #e07b00;
+                color: #fff;
+            }
+
+            button[type="submit"]:hover,
+            button#add-item:hover {
+                background: #c96e00;
+            }
+
+            button.remove-item {
+                background: #eee;
+                color: #555;
+                margin-top: 8px;
+                font-size: 13px;
+            }
+
+            button.remove-item:hover {
+                background: #ddd;
+            }
+
+            button[onclick] {
+                background: #eee;
+                color: #c0392b;
+            }
+
+            button[onclick]:hover {
+                background: #fde;
+            }
+
+            #add-item {
+                margin-top: 4px;
+                margin-bottom: 16px;
+            }
+        </style>
+        {% block stylesheets %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li><a href="{{ path('app_home') }}">Accueil</a></li>
+                <li><a href="{{ path('app_Clocking_list') }}">Pointages</a></li>
+                <li><a href="{{ path('app_Project_list') }}">Chantiers</a></li>
+                <li><a href="{{ path('app_User_list') }}">Collaborateurs</a></li>
+            </ul>
+        </nav>
+        <div class="page">
+            {% block body %}{% endblock %}
+        </div>
+    </body>
+</html>

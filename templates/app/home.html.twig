@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+
+    <h1>Gestion des pointages</h1>
+
+    <p>
+        Bienvenue sur l'application de gestion des pointages des collaborateurs.
+    </p>
+
+    <p>
+        Cette application permet d'enregistrer les heures travaillées par chaque collaborateur
+        sur un ou plusieurs chantiers pour une journée donnée.
+    </p>
+
+    <hr>
+
+    <h3>Fonctionnalités</h3>
+
+    <ul>
+        <li>Créer un nouveau pointage.</li>
+        <li>Associer un collaborateur à une date.</li>
+        <li>Ajouter plusieurs chantiers avec leur durée de travail.</li>
+        <li>Consulter les pointages enregistrés.</li>
+    </ul>
+
+</div>
+{% endblock %}

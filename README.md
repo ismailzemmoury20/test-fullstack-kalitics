@@ -24,6 +24,9 @@ L'application tourne sur `http://127.0.0.1:8000`
 - `php bin/console make:entity` pour générer l'entité ClockingItem
 - `php bin/console doctrine:migrations:diff` pour générer les migrations
 
+## Charger les fixtures
+
+- `php bin/console doctrine:fixtures:load`
 
 ## Ce que j'ai fait
 
